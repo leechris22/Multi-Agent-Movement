@@ -1,0 +1,59 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LevelManager : MonoBehaviour {
+    // Set prefabs
+    public GameObject BoidPrefab;
+
+    // Set necessary game objects
+    public List<GameObject> Boids;
+    public NPCController Player;
+
+    // Set level loading material
+    public GameObject BoidSpawner;
+
+    // On initialization
+    void Start() {
+        // Spawn 20 Boids
+        Boids = new List<GameObject>();
+        for (int i = 0; i < 20; i++) {
+            SpawnBoids();
+        }
+    }
+
+    // Update is called once per frame
+    void Update() {
+        MovetoScene();
+    }
+
+    // Spawn a boid and set necessary targets
+    private void SpawnBoids() {
+        Vector3 size = BoidSpawner.transform.localScale;
+        Vector3 position = BoidSpawner.transform.position + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), 0);
+        GameObject temp = Instantiate(BoidPrefab, position, Quaternion.identity);
+        temp.GetComponent<FlockAI>().lead = Player;
+        foreach (GameObject Boid in Boids) {
+            Boid.GetComponent<FlockAI>().targets.Add(temp.GetComponent<FlockAI>());
+            temp.GetComponent<FlockAI>().targets.Add(Boid.GetComponent<FlockAI>());
+        }
+        Boids.Add(temp);
+    }
+
+    private void MovetoScene() {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            SceneManager.LoadScene(0);
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            SceneManager.LoadScene(1);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            SceneManager.LoadScene(2);
+        }
+    }
+
+// Show the spawn rectangle
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(BoidSpawner.transform.position, BoidSpawner.transform.localScale);
+    }
+}
