@@ -16,10 +16,6 @@ public class NPCController : MonoBehaviour {
     public float maxSpeedA;
     public float maxAccelerationA;
 
-    // For acceleration computations
-    private Vector2 linear;
-    private float angular;
-
     // For AI behavior
     public int state;
 
@@ -30,39 +26,19 @@ public class NPCController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        switch (state) {
-            case 1:
-                linear = ai.Pursue();
-                angular = ai.FaceTowards();
-                break;
-            case 2:
-                linear = ai.Evade();
-                angular = ai.FaceAway();
-                break;
-            case 3:
-                linear = ai.Arrive();
-                angular = ai.FaceTowards();
-                break;
-            case 4:
-                angular = ai.Wander(out linear);
-                break;
-            case 5:
-                angular = ai.pathFollow(out linear);
-                break;
-        }
-        updateMovement(linear, angular, Time.deltaTime);
+        updateMovement(ai.Output(this), Time.deltaTime);
     }
 
-    protected void updateMovement(Vector2 linear, float angular, float time) {
+    protected void updateMovement(Steering steering, float time) {
         // Bound the acceleration
-        if (linear.magnitude > maxAccelerationL) {
-            linear.Normalize();
-            linear *= maxAccelerationL;
+        if (steering.linear.magnitude > maxAccelerationL) {
+            steering.linear.Normalize();
+            steering.linear *= maxAccelerationL;
         }
-        float angularAcceleration = Mathf.Abs(angular);
+        float angularAcceleration = Mathf.Abs(steering.angular);
         if (angularAcceleration > maxAccelerationA) {
-            angular /= angularAcceleration;
-            angular *= maxAccelerationA;
+            steering.angular /= angularAcceleration;
+            steering.angular *= maxAccelerationA;
         }
 
         // Bound the velocity
@@ -74,7 +50,7 @@ public class NPCController : MonoBehaviour {
         }
 
         // Update the position and rotation
-        rb.AddForce(linear * rb.mass);
-        rb.angularVelocity += angular;
+        rb.AddForce(steering.linear * rb.mass);
+        rb.angularVelocity += steering.angular;
     }
 }

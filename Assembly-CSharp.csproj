@@ -62,11 +62,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI.cs" />
+    <Compile Include="Assets\Scripts\Align.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\FlockAI.cs" />
+    <Compile Include="Assets\Scripts\Cohesion.cs" />
+    <Compile Include="Assets\Scripts\Evade.cs" />
+    <Compile Include="Assets\Scripts\FaceTowards.cs" />
+    <Compile Include="Assets\Scripts\Flock.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\NPCController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Pursue.cs" />
+    <Compile Include="Assets\Scripts\Separate.cs" />
+    <Compile Include="Assets\Scripts\Steering.cs" />
+    <Compile Include="Assets\Scripts\VelocityMatch.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Christian/Documents/GitHub/Multi-Agent-Movement/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
