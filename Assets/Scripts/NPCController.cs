@@ -5,8 +5,9 @@ using UnityEngine;
 // Stores data for an object used in AI calculations
 public class NPCController : MonoBehaviour {
     // Store variables for objects
-    private AI ai;
+    public AI ai;
     public Rigidbody2D rb;
+    public NPCController target;
 
     // Bounds linear changes
     public float maxSpeedL;
@@ -18,15 +19,9 @@ public class NPCController : MonoBehaviour {
 
     // For AI behavior
     public int state;
-
-    // On initialization
-    private void Start() {
-        ai = GetComponent<AI>();
-        rb = GetComponent<Rigidbody2D>();
-    }
-
+    
     private void FixedUpdate() {
-        updateMovement(ai.Output(this), Time.deltaTime);
+        updateMovement(ai.Output(target), Time.deltaTime);
     }
 
     protected void updateMovement(Steering steering, float time) {

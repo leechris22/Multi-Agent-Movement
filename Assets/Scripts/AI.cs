@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface AI {
+public class AI : MonoBehaviour{
+    // Initialize necessary variables
+    public NPCController player;
 
-    Steering Output(NPCController target);
+    // On initialization
+    virtual protected void Start() {
+        player = GetComponent<NPCController>();
+    }
+
+    public virtual Steering Output(NPCController target) {
+        return new Steering();
+    }
     /*
     // For wander function
     private float wanderOrientation;

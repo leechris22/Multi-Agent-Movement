@@ -33,10 +33,10 @@ public class LevelManager : MonoBehaviour {
         Vector3 size = BoidSpawner.transform.localScale;
         Vector3 position = BoidSpawner.transform.position + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), 0);
         GameObject temp = Instantiate(BoidPrefab, position, Quaternion.identity);
-        temp.GetComponent<FlockAI>().lead = Player;
+        temp.GetComponent<NPCController>().target = Player;
         foreach (GameObject Boid in Boids) {
-            Boid.GetComponent<FlockAI>().targets.Add(temp.GetComponent<FlockAI>());
-            temp.GetComponent<FlockAI>().targets.Add(Boid.GetComponent<FlockAI>());
+            Boid.GetComponent<Flock>().targets.Add(temp.GetComponent<NPCController>());
+            temp.GetComponent<Flock>().targets.Add(Boid.GetComponent<NPCController>());
         }
         Boids.Add(temp);
     }
@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-// Show the spawn rectangle
+    // Show the spawn rectangle
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(BoidSpawner.transform.position, BoidSpawner.transform.localScale);

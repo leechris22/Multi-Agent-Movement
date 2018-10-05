@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Separate : MonoBehaviour, AI {
+public class Separate : AI {
     // Initialize necessary variables
-    public NPCController player;
     public float decayCoefficient;
 
-    // On initialization
-    private void Start() {
-        player = GetComponent<NPCController>();
-    }
-
     // Define Output
-    public Steering Output(NPCController target) {
+    override public Steering Output(NPCController target) {
         // Get direction and distance
         Vector2 direction = target.rb.position - player.rb.position;
 

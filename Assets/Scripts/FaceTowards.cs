@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FaceTowards : MonoBehaviour {
+public class FaceTowards : AI {
     // Initialize necessary variables
-    public NPCController player;
     public float slowRadiusA;
     public float stopRadiusA;
     public float timeToTarget;
 
-    // On initialization
-    private void Start() {
-        player = GetComponent<NPCController>();
-    }
-
     // Define Output
-    public Steering Output(NPCController target) {
+    override public Steering Output(NPCController target) {
         // Work out the direction to target
         Vector2 direction = target.rb.position - player.rb.position;
         float rotation = -Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg - player.rb.rotation;

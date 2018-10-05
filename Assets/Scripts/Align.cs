@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Align : MonoBehaviour, AI {
+public class Align : AI {
     // Initialize necessary variables
     public NPCController player;
     public float slowRadiusA;
@@ -15,7 +15,7 @@ public class Align : MonoBehaviour, AI {
     }
 
     // Define Output
-    public Steering Output(NPCController target) {
+    override public Steering Output(NPCController target) {
         // Work out the rotation to target
         float rotation = target.rb.rotation - player.rb.rotation;
 

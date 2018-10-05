@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VelocityMathc : MonoBehaviour, AI {
+public class VelocityMatch : AI {
     // Initialize necessary variables
-    public NPCController player;
     public float timeToTarget;
 
-    // On initialization
-    private void Start() {
-        player = GetComponent<NPCController>();
-    }
-
     // Define Output
-    public Steering Output(NPCController target) {
+    override public Steering Output(NPCController target) {
         // Create the structure to hold our output
         Steering steering = new Steering((target.rb.velocity - player.rb.velocity) / timeToTarget, 0);
 

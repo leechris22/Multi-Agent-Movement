@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Evade : MonoBehaviour, AI {
+public class Evade : AI {
     public NPCController player;
     public float maxPrediction;
 
@@ -12,7 +12,7 @@ public class Evade : MonoBehaviour, AI {
     }
 
     // Define Output
-    public Steering Output(NPCController target) {
+    override public Steering Output(NPCController target) {
         // Calculate prediction scalar based on current speed and target distance
         float distance = (target.rb.position - player.rb.position).magnitude;
         float speed = target.rb.velocity.magnitude;

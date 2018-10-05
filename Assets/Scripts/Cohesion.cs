@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cohesion : MonoBehaviour, AI {
+public class Cohesion : AI {
     // Initialize necessary variables
-    public NPCController player;
     public float slowRadiusL;
     public float stopRadiusL;
     public float timeToTarget;
 
-    // On initialization
-    private void Start() {
-        player = GetComponent<NPCController>();
-    }
-
     // Define Output
-    public Steering Output(NPCController target) {
+    override public Steering Output(NPCController target) {
         // Get the direction to the target
         Vector2 direction = target.rb.position - player.rb.position;
         float distance = direction.magnitude;

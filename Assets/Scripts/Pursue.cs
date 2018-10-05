@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pursue : MonoBehaviour, AI {
+public class Pursue : AI {
     // Initialize necessary variables
-    public NPCController player;
     public float maxPrediction;
 
-    // On initialization
-    private void Start() {
-        player = GetComponent<NPCController>();
-    }
-
     // Define Output
-    public Steering Output(NPCController target) {
+    override public Steering Output(NPCController target) {
         // Calculate prediction scalar based on current speed and target distance
         float distance = (target.rb.position - player.rb.position).magnitude;
         float speed = target.rb.velocity.magnitude;

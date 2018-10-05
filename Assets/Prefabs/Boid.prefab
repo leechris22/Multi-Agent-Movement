@@ -41,10 +41,13 @@ GameObject:
   - component: {fileID: 23003991462689624}
   - component: {fileID: 50081983720654976}
   - component: {fileID: 58978911769982348}
-  - component: {fileID: 114218764510278834}
-  - component: {fileID: 114836073890702674}
-  - component: {fileID: 114883592711970254}
-  - component: {fileID: 114676170811075770}
+  - component: {fileID: 114771072631084842}
+  - component: {fileID: 114059053439950312}
+  - component: {fileID: 114787163485045960}
+  - component: {fileID: 114420572486168372}
+  - component: {fileID: 114729356094230472}
+  - component: {fileID: 114561161213513188}
+  - component: {fileID: 114856754680392636}
   m_Layer: 9
   m_Name: Boid
   m_TagString: Untagged
@@ -210,7 +213,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114218764510278834
+--- !u!114 &114059053439950312
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,32 +224,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b4d83c98698a542a4b396ee22a4bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 50081983720654976}
-  maxSpeedL: 10
-  maxAccelerationL: 9
-  maxSpeedA: 150
-  maxAccelerationA: 100
-  linear: {x: 0, y: 0}
-  angular: 0
-  state: 0
-  lead: {fileID: 114803632820732304, guid: 4be2aae262aebaa41b1d44ccabee74d0, type: 2}
+  player: {fileID: 114771072631084842}
   targets: []
   weights:
-  - 2
-  - 1
-  - 1.5
   - 1
   - 0.1
-  strengths: []
+  - 100
+  - 1.5
+  - 1
+  strengths:
+  - linear: {x: 0, y: 0}
+    angular: 0
+  - linear: {x: 0, y: 0}
+    angular: 0
+  - linear: {x: 0, y: 0}
+    angular: 0
+  - linear: {x: 0, y: 0}
+    angular: 0
+  - linear: {x: 0, y: 0}
+    angular: 0
+  ai: []
   threshold: 5
-  decayCoefficient: 5
+--- !u!114 &114420572486168372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955005262865284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9232892a3fe9a41aee330b6dec18cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114771072631084842}
   slowRadiusA: 50
   stopRadiusA: 6
   timeToTarget: 0.1
-  slowRadiusL: 5
-  stopRadiusL: 4
-  maxPrediction: 1
---- !u!114 &114676170811075770
+--- !u!114 &114561161213513188
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,24 +271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9eafdfcbda2f049b3dc3b962bcf415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  slowRadiusL: 0
-  stopRadiusL: 0
-  timeToTarget: 0
---- !u!114 &114836073890702674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1955005262865284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4873b4cbe3c4240b9c6e8d0da56407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  maxPrediction: 0
---- !u!114 &114883592711970254
+  player: {fileID: 114771072631084842}
+  slowRadiusL: 5
+  stopRadiusL: 4
+  timeToTarget: 0.1
+--- !u!114 &114729356094230472
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,5 +286,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c774227d14b9a2641a9abc210e6aa59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  decayCoefficient: 0
+  player: {fileID: 114771072631084842}
+  decayCoefficient: 5
+--- !u!114 &114771072631084842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955005262865284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5d502761869f448aa11cd155957d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 114059053439950312}
+  rb: {fileID: 50081983720654976}
+  target: {fileID: 0}
+  maxSpeedL: 10
+  maxAccelerationL: 9
+  maxSpeedA: 150
+  maxAccelerationA: 100
+  state: 0
+--- !u!114 &114787163485045960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955005262865284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4873b4cbe3c4240b9c6e8d0da56407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114771072631084842}
+  maxPrediction: 1
+--- !u!114 &114856754680392636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955005262865284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3cec5f2efff3145a277b12cf761287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114771072631084842}
+  timeToTarget: 0.1

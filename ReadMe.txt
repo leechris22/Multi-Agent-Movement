@@ -1,8 +1,8 @@
 1) What are the weights of the three steering behaviors in your flocking model?
 
 Separation - 2
-Alignment - 1
 Cohesion - 1.5
+Alignment - 1
 
 2) In Part 2, what did you do for avoiding a group of agents? What are the weights of
 path following and evade behavior? Did you use a separation algorithm, and what
@@ -12,6 +12,10 @@ were its parameters?
 
 
 Part 1
+
+
+
+
 - How to implement Keyboard/Mouse, used player with arrive.
 - How to make the playing field.
 - How to display different parts, use buttons (1,2,3) to switch scenes.
