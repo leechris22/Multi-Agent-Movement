@@ -5,7 +5,9 @@ using UnityEngine;
 // Stores data for an object used in AI calculations
 public class NPCController : MonoBehaviour {
     // Store variables for objects
-    public AI ai;
+    [SerializeField]
+    private AI ai;
+    [HideInInspector]
     public Rigidbody2D rb;
     public NPCController target;
 
@@ -17,9 +19,12 @@ public class NPCController : MonoBehaviour {
     public float maxSpeedA;
     public float maxAccelerationA;
 
-    // For AI behavior
-    public int state;
-    
+    // On initialization
+    private void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update the movement
     private void FixedUpdate() {
         updateMovement(ai.Output(target), Time.deltaTime);
     }

@@ -61,20 +61,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AI.cs" />
-    <Compile Include="Assets\Scripts\Align.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Cohesion.cs" />
-    <Compile Include="Assets\Scripts\Evade.cs" />
-    <Compile Include="Assets\Scripts\FaceTowards.cs" />
-    <Compile Include="Assets\Scripts\Flock.cs" />
-    <Compile Include="Assets\Scripts\LevelManager.cs" />
+    <Compile Include="Assets\Imphenzia\GradientSky\Scripts\Common\GradientSkyCommon.cs" />
+    <Compile Include="Assets\Imphenzia\GradientSky\Scripts\GradientSkyCamera.cs" />
+    <Compile Include="Assets\Imphenzia\GradientSky\Scripts\GradientSkyObject.cs" />
+    <Compile Include="Assets\Scripts\AI\AI.cs" />
+    <Compile Include="Assets\Scripts\AI\Cohesion.cs" />
+    <Compile Include="Assets\Scripts\AI\FaceTowards.cs" />
+    <Compile Include="Assets\Scripts\AI\Flock.cs" />
+    <Compile Include="Assets\Scripts\AI\Pursue.cs" />
+    <Compile Include="Assets\Scripts\AI\Separate.cs" />
+    <Compile Include="Assets\Scripts\AI\Steering.cs" />
+    <Compile Include="Assets\Scripts\AI\VelocityMatch.cs" />
+    <Compile Include="Assets\Scripts\FlockCamera.cs" />
+    <Compile Include="Assets\Scripts\LevelManager1.cs" />
+    <Compile Include="Assets\Scripts\LevelManager2.cs" />
     <Compile Include="Assets\Scripts\NPCController.cs" />
+    <Compile Include="Assets\Scripts\Path\Bezier.cs" />
+    <Compile Include="Assets\Scripts\Path\Path.cs" />
+    <Compile Include="Assets\Scripts\Path\PathCreator.cs" />
+    <Compile Include="Assets\Scripts\Path\PathEditor.cs" />
+    <Compile Include="Assets\Scripts\Path\PathPlacer.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Pursue.cs" />
-    <Compile Include="Assets\Scripts\Separate.cs" />
-    <Compile Include="Assets\Scripts\Steering.cs" />
-    <Compile Include="Assets\Scripts\VelocityMatch.cs" />
+    <None Include="Assets\Imphenzia\GradientSky\ReadMe - GradientSky.txt" />
+    <None Include="Assets\Imphenzia\GradientSky\Shaders\VertexColorCamera.shader" />
+    <None Include="Assets\Imphenzia\GradientSky\Shaders\VertexColorObject.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Christian/Documents/GitHub/Multi-Agent-Movement/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

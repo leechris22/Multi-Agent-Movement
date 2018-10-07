@@ -218,9 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267163bf10d24fa4e821d9e0a36ac1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
   rb: {fileID: 50049841282282530}
-  maxSpeedL: 5
-  maxAccelerationL: 4
+  target: {fileID: 0}
+  maxSpeedL: 10
+  maxAccelerationL: 15
   maxSpeedA: 0
   maxAccelerationA: 0
-  state: 0
