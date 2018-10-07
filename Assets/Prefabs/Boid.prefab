@@ -225,12 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  ai:
-  - {fileID: 114787163485045960}
-  - {fileID: 114420572486168372}
-  - {fileID: 114729356094230472}
-  - {fileID: 114561161213513188}
-  - {fileID: 114856754680392636}
+  facing: {fileID: 114420572486168372}
   weights:
   - 3
   - 1

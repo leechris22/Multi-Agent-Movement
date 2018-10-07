@@ -9,18 +9,25 @@ public class PathPlacer : MonoBehaviour {
     public float spacing = 1f;
     public float resolution = 1;
 
-    // Hold the linerenderer
+    // Hold the linerenderer and point prefab
     private LineRenderer line;
+    [SerializeField]
+    private GameObject PointPrefab;
+    [HideInInspector]
+    public NPCController[] path;
 
     // On start, create points
-    void Start() {
+    void Awake() {
         line = GetComponent<LineRenderer>();
+
         Vector2[] points = GetComponent<PathCreator>().path.CalculateEvenlySpacedPoints(spacing, resolution);
         line.positionCount = points.Length;
+        path = new NPCController[points.Length];
+        
+        // Add points to linerenderer and path array
         for (int i = 0; i < points.Length; i++) {
             line.SetPosition(i, points[i]);
+            path[i] = Instantiate(PointPrefab, points[i], Quaternion.identity).GetComponent<NPCController>();
         }
     }
-
-
 }

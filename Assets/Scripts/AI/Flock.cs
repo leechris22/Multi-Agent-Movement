@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Combines behaviors to create Flock behavior
+[RequireComponent(typeof(Pursue))]
+[RequireComponent(typeof(Separate), typeof(Arrive), typeof(VelocityMatch))]
 public class Flock : AI {
     // Flock groups
     [HideInInspector]
@@ -10,9 +12,10 @@ public class Flock : AI {
 
     // Behavior calculations
     [SerializeField]
-    private AI[] ai;
+    private AI facing;
     [SerializeField]
     private float[] weights;
+    private AI[] ai;
     private Steering[] strengths;
 
     // Distance threshold for targets
@@ -21,6 +24,13 @@ public class Flock : AI {
 
     // On initialization
     override protected void Awake() {
+        ai = new AI[] {
+            GetComponent<Pursue>(),
+            facing,
+            GetComponent<Separate>(),
+            GetComponent<Arrive>(),
+            GetComponent<VelocityMatch>()
+        };
         player = GetComponent<NPCController>();
         strengths = new Steering[5];
     }

@@ -96,50 +96,5 @@ public class AI : MonoBehaviour {
 
         // Return angular acceleration
         return (targetRotation - player.rb.rotation) / timeToTarget;
-    }
-
-    // Calculate the Path to follow
-    public float pathFollow(out Vector2 linear) {
-        linear = Vector2.zero;
-        // If no path to follow, do nothing
-        if (current >= Path.Length) {
-            return 0;
-        }
-
-        // Work out the direction to target
-        Vector2 direction = new Vector2(Path[current].transform.position.x, Path[current].transform.position.y) - player.rb.position;
-        float rotation = Mathf.Atan2(direction.x, direction.y)*Mathf.Rad2Deg - player.rb.rotation;
-
-        // Map the result to the (-180, 180) interval
-        while (rotation > 180) {
-            rotation -= 360;
-        }
-        while (rotation < -180) {
-            rotation += 360;
-        }
-        float rotationSize = Mathf.Abs(rotation);
-
-        // Check if we are there, return no steering
-        if (rotationSize < stopRadiusA) {
-            player.rb.angularVelocity = 0;
-        }
-
-        // Calculate a scaled rotation if player is inside the slowRadius
-        float targetRotation = (rotationSize > slowRadiusA ? player.maxSpeedA : player.maxSpeedA * rotationSize / slowRadiusA);
-        targetRotation *= rotation / rotationSize;
-
-        if ((new Vector2(Path[current].transform.position.x, Path[current].transform.position.y) - player.rb.position).magnitude > stopRadiusL) {
-            // Give full acceleration along this direction
-            direction.Normalize();
-            direction *= player.maxAccelerationA;
-
-            // Get the direction to the target
-            linear = direction;
-        } else {
-            current++;
-        }
-
-        // Return angular acceleration
-        return (targetRotation - player.rb.rotation) / timeToTarget;
     }*/
 }

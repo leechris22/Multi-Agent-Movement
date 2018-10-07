@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114417884806250622}
   - component: {fileID: 114596264548458136}
   - component: {fileID: 114343733757861420}
-  - component: {fileID: 114335845978107338}
+  - component: {fileID: 114527464716719790}
   - component: {fileID: 114973998937274046}
   - component: {fileID: 114429577157682430}
   - component: {fileID: 114996402683439696}
@@ -213,20 +213,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114335845978107338
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896315022158306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9232892a3fe9a41aee330b6dec18cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slowRadiusA: 50
-  stopRadiusA: 6
-  timeToTarget: 0.1
 --- !u!114 &114343733757861420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +231,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896315022158306}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f5d502761869f448aa11cd155957d71, type: 3}
   m_Name: 
@@ -253,8 +239,8 @@ MonoBehaviour:
   ai: {fileID: 114596264548458136}
   rb: {fileID: 0}
   target: {fileID: 0}
-  maxSpeedL: 10
-  maxAccelerationL: 10
+  maxSpeedL: 5
+  maxAccelerationL: 5
   maxSpeedA: 100
   maxAccelerationA: 100
 --- !u!114 &114429577157682430
@@ -271,6 +257,17 @@ MonoBehaviour:
   slowRadiusL: 5
   stopRadiusL: 4
   timeToTarget: 0.1
+--- !u!114 &114527464716719790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896315022158306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a32ce39f49905244bc6e7f353157ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114596264548458136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,19 +280,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  ai:
-  - {fileID: 114343733757861420}
-  - {fileID: 114335845978107338}
-  - {fileID: 114973998937274046}
-  - {fileID: 114429577157682430}
-  - {fileID: 114996402683439696}
+  facing: {fileID: 114527464716719790}
   weights:
   - 3
   - 1
   - 5
   - 1.5
   - 1
-  threshold: 5
+  threshold: 3
 --- !u!114 &114973998937274046
 MonoBehaviour:
   m_ObjectHideFlags: 1
