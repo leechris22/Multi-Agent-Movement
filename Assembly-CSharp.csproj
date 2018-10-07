@@ -74,12 +74,13 @@
     <Compile Include="Assets\Scripts\AI\Separate.cs" />
     <Compile Include="Assets\Scripts\AI\Steering.cs" />
     <Compile Include="Assets\Scripts\AI\VelocityMatch.cs" />
-    <Compile Include="Assets\Scripts\FlockCamera.cs" />
     <Compile Include="Assets\Scripts\Gradient\GradientSkyCommon.cs" />
     <Compile Include="Assets\Scripts\Gradient\GradientSkyObject.cs" />
-    <Compile Include="Assets\Scripts\LevelManager1.cs" />
-    <Compile Include="Assets\Scripts\LevelManager2.cs" />
     <Compile Include="Assets\Scripts\NPCController.cs" />
+    <Compile Include="Assets\Scripts\Part1\FlockCamera.cs" />
+    <Compile Include="Assets\Scripts\Part1\LevelManager1.cs" />
+    <Compile Include="Assets\Scripts\Part2\CollisionCamera.cs" />
+    <Compile Include="Assets\Scripts\Part2\LevelManager2.cs" />
     <Compile Include="Assets\Scripts\Path\Bezier.cs" />
     <Compile Include="Assets\Scripts\Path\Path.cs" />
     <Compile Include="Assets\Scripts\Path\PathCreator.cs" />

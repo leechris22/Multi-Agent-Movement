@@ -12,12 +12,16 @@ public class Flock : AI {
 
     // Behavior calculations
     [SerializeField]
-    private AI facing;
-    [SerializeField]
     private float[] weights;
     [SerializeField]
     private AI[] ai;
     private Steering[] strengths;
+
+    // For collision prevention behaviors
+    [HideInInspector]
+    public bool addCone = false;
+    [HideInInspector]
+    public bool addPrediction = false;
 
     // Distance threshold for targets
     [SerializeField]
@@ -52,9 +56,14 @@ public class Flock : AI {
         // Calculate strengths and output
         strengths[0] = ai[0].Output(lead);
         strengths[1] = ai[1].Output(lead);
-        if (strengths.Length > 5) {
+        if (addCone) {
             strengths[5] = ai[5].Output(lead);
         }
+        if (addPrediction) {
+            strengths[6] = ai[6].Output(lead);
+        }
+
+        // Add the strengths and return the result
         Steering steering = new Steering();
         for (int i = 0; i < weights.Length; i++) {
             strengths[i] *= weights[i];

@@ -1,16 +1,9 @@
-
-
-2) In Part 2, what did you do for avoiding a group of agents? What are the weights of
-path following and evade behavior? Did you use a separation algorithm, and what
-were its parameters?
-
-3) In Part 3, how many rays did you use in your ray-casting, and why?
-
 Press 1,2,3 to switch between/reset parts. 1 leads to Part 1, etc.
 
-Part 1
+***Part 1***
+
 Controls:
-Move player- Arrow keys or WASD or press and hold with mouse
+Move player - Arrow keys or WASD or press and hold with mouse
 
 1) What are the weights of the three steering behaviors in your flocking model?
 
@@ -30,14 +23,53 @@ Velocity Match- 1
 - Align was originally added so that the Boids had a similar orientation to its group,
 but that made the Boids turn unnatural.
 
-2)
 
-Part 2
-- How to move sinusoidal, path finding using points.
-- Show indicators
-Part 3
+***Part 2***
+
+Controls:
+Switch to Cone Check - Q
+Switch to Collision Prediction - E
+Move Camera Horizontally - AD or Left and Right Arrows
+
+2) In Part 2, what did you do for avoiding a group of agents? What are the weights of
+path following and evade behavior? Did you use a separation algorithm, and what
+were its parameters?
+
+To avoid a group of agents, the Cone Check or CollisionPrediction algorithms were added
+as extra behaviors for Flock. The Cone Check does the dot product calculation, then calls
+Evade on the target. For multiple targets, the cone check only calls Evade on the closest one.
+
+Cone Check: Threshold = 2
+Evade: Max Prediction = 1
+Collision Prediction: Radius = 3
+
+- An invisible lead uses the Path Following behavior to follow a path.
+- The Flocking behavior calls Pursue on this lead. This allows the Boids to follow the path
+as a group
+- The Flocking behaviors and weights are:
+
+Pursue - 3
+Face - 1
+Separate - 5
+Arrive - 1
+Velocity Match - 1
+Cone Check- 2
+Collision Prediction - 2
+
+- The last two behaviors are toggled false, but can be set to true using Q or E.
+- Even with the collision prevention behaviors, the Boids tend to collide with each other a lot.
+- Many values have been tested, but there will usually be one or two Boids that get stuck together.
+
+***Part 3***
+
+Controls:
+Switch to Cone Check - Q
+Switch to Collision Prediction - E
+Move Camera Horizontally - AD or Left and Right Arrows
+
+3) In Part 3, how many rays did you use in your ray-casting, and why?
+
+
 - 2D or 3D, implement curved shapes
 - Says one agent, so only one bird
-- 1, 3, 4, 5
-- The width of object 4
 - Corner Trap demo

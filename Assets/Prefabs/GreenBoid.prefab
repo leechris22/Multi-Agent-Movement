@@ -48,6 +48,9 @@ GameObject:
   - component: {fileID: 114888248357688588}
   - component: {fileID: 114417521214434268}
   - component: {fileID: 114272109848875324}
+  - component: {fileID: 114122115613232980}
+  - component: {fileID: 114177095258559236}
+  - component: {fileID: 114406933942098456}
   m_Layer: 9
   m_Name: GreenBoid
   m_TagString: Untagged
@@ -225,6 +228,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPrediction: 1
+--- !u!114 &114122115613232980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377075383433880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb974c9463e0683429eb913a085e662f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  threshold: 2
+--- !u!114 &114177095258559236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377075383433880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e72d7e714d1e74fbd0dc95338f35bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPrediction: 1
 --- !u!114 &114217616821986792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,6 +294,19 @@ MonoBehaviour:
   maxAccelerationL: 5
   maxSpeedA: 100
   maxAccelerationA: 100
+--- !u!114 &114406933942098456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377075383433880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f71b018164c5914e8054b925d588d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  radius: 3
 --- !u!114 &114417521214434268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,8 +338,20 @@ MonoBehaviour:
   - 3
   - 1
   - 5
-  - 1.5
   - 1
+  - 1
+  - 2
+  - 2
+  ai:
+  - {fileID: 114105020351798656}
+  - {fileID: 114217616821986792}
+  - {fileID: 114888248357688588}
+  - {fileID: 114417521214434268}
+  - {fileID: 114272109848875324}
+  - {fileID: 114122115613232980}
+  - {fileID: 114406933942098456}
+  addCone: 0
+  addPrediction: 0
   threshold: 3
 --- !u!114 &114888248357688588
 MonoBehaviour:

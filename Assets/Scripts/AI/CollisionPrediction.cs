@@ -2,77 +2,64 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Predict the position of the targets and evade
 public class CollisionPrediction : AI {
     // Initialize necessary variables
     [HideInInspector]
     public List<NPCController> targets;
     [SerializeField]
-    private List<NPCController> radius;
-
+    private float radius;
 
     // Define Output
-    override public Steering Output(NPCController target) {
+    override public Steering Output(NPCController lead) {
         // Calculate prediction scalar based on current speed and target distance
-        //float shortestTime = Mathf.Infinity;
-
-        return new Steering();
-        /*
+        float shortestTime = Mathf.Infinity;
         NPCController firstTarget = null;
-        float firstTarget = None;
-        float firstMinSeparation;
-        float firstDistance;
-        float firstRelativePos;
-        float firstRelativeVel;
+        float firstSeparation = 0;
+        float firstDistance = 0;
+        Vector2 firstPosition = Vector2.zero;
+        Vector2 firstVelocity = Vector2.zero;
 
-        for target in targets:
-        33
-        34 # Calculate the time to collision
-        35 relativePos = target.position - character.position
-        36 relativeVel = target.velocity - character.velocity
-        37 relativeSpeed = relativeVel.length()
-        38 timeToCollision = (relativePos.relativeVel) /
-        39(relativeSpeed * relativeSpeed)
-        40
-        41 # Check if it is going to be a collision at all
-        42 distance = relativePos.length()
-        43 minSeparation = distance - relativeSpeed * shortestTime
-        44 if minSeparation > 2 * radius: continue
-        45
-        46 # Check if it is the shortest
-        47 if timeToCollision > 0 and
+        foreach (NPCController target in targets) {
+            // Calculate the time to collision
+            Vector2 position = target.rb.position - player.rb.position;
+            Vector2 velocity = target.rb.velocity - player.rb.velocity;
+            float timeToCollision = (Vector2.Dot(position, velocity) / (velocity.magnitude * velocity.magnitude));
 
-        timeToCollision < shortestTime:
-        49
-        50 # Store the time, target and other data
-        51 shortestTime = timeToCollision
-        52 firstTarget = target
-        53 firstMinSeparation = minSeparation
-        54 firstDistance = distance
-        55 firstRelativePos = relativePos
-        56 firstRelativeVel = relativeVel
-        57
-        58 # 2. Calculate the steering
-        59
-        60 # If we have no target, then exit
-        61 if not firstTarget: return None
-        62
-        63 # If we’re going to hit exactly, or if we’re already
-        64 # colliding, then do the steering based on current
-        65 # position.
-        66 if firstMinSeparation <= 0 or distance < 2 * radius:
-        67 relativePos = firstTarget.position -
-        68 character.position
-        69
-        70 # Otherwise calculate the future relative position
-        71 else:
-        72 relativePos = firstRelativePos +
-        73 firstRelativeVel* shortestTime
-        74
-        75 # Avoid the target
-        76 relativePos.normalize()
-        77 steering.linear = relativePos * maxAcceleration
-        78
-        79 # Return the steering
-        80 return steering*/
+            // Check if the collision will happen
+            float distance = position.magnitude;
+            float separation = distance - velocity.magnitude * shortestTime;
+            if (separation > 2 * radius) {
+                continue;
+            }
+
+            // Check if it is the shortest
+            if (timeToCollision > 0 && timeToCollision < shortestTime) {
+                // Store the time, target and other data
+                shortestTime = timeToCollision;
+                firstTarget = target;
+                firstSeparation = separation;
+                firstDistance = distance;
+                firstPosition = position;
+                firstVelocity = velocity;
+            }
+        }
+
+        // Calculate the steering
+        if (!firstTarget) {
+            return new Steering();
+        }
+
+        // If we’re going to hit exactly, or if we’re already colliding, then do the steering based on current position.
+        Vector2 relativePos = Vector2.zero;
+        if (firstSeparation <= 0 || firstDistance < 2 * radius) {
+            relativePos = firstTarget.rb.position - player.rb.position;
+        } else {
+            // Otherwise calculate the future relative position
+            relativePos = firstPosition + firstVelocity * shortestTime;
+        }
+
+        // Return the steering
+        return new Steering(Vector2.ClampMagnitude(relativePos, player.maxAccelerationL), 0);
     }
 }

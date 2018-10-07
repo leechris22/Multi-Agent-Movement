@@ -48,6 +48,9 @@ GameObject:
   - component: {fileID: 114973998937274046}
   - component: {fileID: 114429577157682430}
   - component: {fileID: 114996402683439696}
+  - component: {fileID: 114545231211096344}
+  - component: {fileID: 114335667761401704}
+  - component: {fileID: 114219937216409276}
   m_Layer: 9
   m_Name: RedBoid
   m_TagString: Untagged
@@ -213,6 +216,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114219937216409276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896315022158306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f71b018164c5914e8054b925d588d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  radius: 3
+--- !u!114 &114335667761401704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896315022158306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e72d7e714d1e74fbd0dc95338f35bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPrediction: 1
 --- !u!114 &114343733757861420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,6 +296,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a32ce39f49905244bc6e7f353157ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114545231211096344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896315022158306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb974c9463e0683429eb913a085e662f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  threshold: 2
 --- !u!114 &114596264548458136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,13 +321,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  facing: {fileID: 114527464716719790}
   weights:
   - 3
   - 1
   - 5
-  - 1.5
   - 1
+  - 1
+  - 2
+  - 2
+  ai:
+  - {fileID: 114343733757861420}
+  - {fileID: 114527464716719790}
+  - {fileID: 114973998937274046}
+  - {fileID: 114429577157682430}
+  - {fileID: 114996402683439696}
+  - {fileID: 114545231211096344}
+  - {fileID: 114219937216409276}
+  addCone: 0
+  addPrediction: 0
   threshold: 3
 --- !u!114 &114973998937274046
 MonoBehaviour:
