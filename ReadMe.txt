@@ -17,7 +17,7 @@ Move player- Arrow keys or WASD or press and hold with mouse
 Pursue - 3
 Face - 1
 Separation - 5
-Cohesion - 1.5
+Cohesion(Arrive) - 1.5
 Velocity Match- 1
 
 - The Boids follow the player using Pursue.

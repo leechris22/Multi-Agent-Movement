@@ -15,6 +15,7 @@ public class Flock : AI {
     private AI facing;
     [SerializeField]
     private float[] weights;
+    [SerializeField]
     private AI[] ai;
     private Steering[] strengths;
 
@@ -24,13 +25,6 @@ public class Flock : AI {
 
     // On initialization
     override protected void Awake() {
-        ai = new AI[] {
-            GetComponent<Pursue>(),
-            facing,
-            GetComponent<Separate>(),
-            GetComponent<Arrive>(),
-            GetComponent<VelocityMatch>()
-        };
         player = GetComponent<NPCController>();
         strengths = new Steering[5];
     }
