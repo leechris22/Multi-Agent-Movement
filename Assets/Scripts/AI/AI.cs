@@ -11,6 +11,7 @@ public class AI : MonoBehaviour {
         player = GetComponent<NPCController>();
     }
 
+	//overrdide this
     virtual public Steering Output(NPCController target) {
         return new Steering();
     }
