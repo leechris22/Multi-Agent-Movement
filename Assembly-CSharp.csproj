@@ -61,9 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Imphenzia\GradientSky\Scripts\Common\GradientSkyCommon.cs" />
-    <Compile Include="Assets\Imphenzia\GradientSky\Scripts\GradientSkyCamera.cs" />
-    <Compile Include="Assets\Imphenzia\GradientSky\Scripts\GradientSkyObject.cs" />
     <Compile Include="Assets\Scripts\AI\AI.cs" />
     <Compile Include="Assets\Scripts\AI\Cohesion.cs" />
     <Compile Include="Assets\Scripts\AI\FaceTowards.cs" />
@@ -73,6 +70,8 @@
     <Compile Include="Assets\Scripts\AI\Steering.cs" />
     <Compile Include="Assets\Scripts\AI\VelocityMatch.cs" />
     <Compile Include="Assets\Scripts\FlockCamera.cs" />
+    <Compile Include="Assets\Scripts\Gradient\GradientSkyCommon.cs" />
+    <Compile Include="Assets\Scripts\Gradient\GradientSkyObject.cs" />
     <Compile Include="Assets\Scripts\LevelManager1.cs" />
     <Compile Include="Assets\Scripts\LevelManager2.cs" />
     <Compile Include="Assets\Scripts\NPCController.cs" />
@@ -82,9 +81,7 @@
     <Compile Include="Assets\Scripts\Path\PathEditor.cs" />
     <Compile Include="Assets\Scripts\Path\PathPlacer.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <None Include="Assets\Imphenzia\GradientSky\ReadMe - GradientSky.txt" />
-    <None Include="Assets\Imphenzia\GradientSky\Shaders\VertexColorCamera.shader" />
-    <None Include="Assets\Imphenzia\GradientSky\Shaders\VertexColorObject.shader" />
+    <None Include="Assets\Other\VertexColorObject.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Christian/Documents/GitHub/Multi-Agent-Movement/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
