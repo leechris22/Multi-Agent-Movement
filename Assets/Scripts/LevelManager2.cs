@@ -30,8 +30,17 @@ public class LevelManager2 : MonoBehaviour {
             SpawnBoids(RedBoidPrefab, RedBoidLead, RedBoidLead.GetComponent<NPCController>(), RedBoids);
         }
 
+        // Set leads to follow path
         GreenBoidLead.GetComponent<PathFollow>().path = GreenBoidPath.GetComponent<PathPlacer>().path;
         RedBoidLead.GetComponent<PathFollow>().path = RedBoidPath.GetComponent<PathPlacer>().path;
+
+        // Set collision detection
+        foreach (GameObject GBoid in GreenBoids) {
+            foreach (GameObject RBoid in RedBoids) {
+                GBoid.GetComponent<ConeCheck>().targets.Add(RBoid.GetComponent<NPCController>());
+                RBoid.GetComponent<ConeCheck>().targets.Add(GBoid.GetComponent<NPCController>());
+            }
+        }
     }
 
     // Update is called once per frame

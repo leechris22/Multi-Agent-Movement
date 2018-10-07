@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Create a cone to detect collisions
-[RequireComponent(typeof(Separate))]
+[RequireComponent(typeof(Evade))]
 public class ConeCheck : AI {
     // Avoid group
     [HideInInspector]
@@ -15,16 +15,20 @@ public class ConeCheck : AI {
     override public Steering Output(NPCController lead) {
         // Define variables
         Vector2 orientation = new Vector2(Mathf.Sin(player.rb.rotation), Mathf.Cos(player.rb.rotation));
-        Steering result = new Steering();
-        int count = 0;
+        NPCController nearest = null;
 
-        // Obtain the averaged data for nearby boids and calculate separation velocity
+        // Obtain the data for nearest boid and calculate separation velocity
         foreach (NPCController target in targets) {
-            if (Vector2.Dot(orientation, (target.rb.position - player.rb.position)) < threshold) {
-                result += GetComponent<Separate>().Output(target);
-                count++;
+            if (Vector2.Dot(orientation, (target.rb.position - player.rb.position)) > threshold) {
+                if (!nearest || Vector2.Distance(player.rb.position, target.rb.position) < Vector2.Distance(player.rb.position, nearest.rb.position)) {
+                    nearest = target;
+                }
             }
         }
-        return result /= Mathf.Max(count, 1);
+        if (!nearest) {
+            return new Steering();
+        }
+
+        return GetComponent<Evade>().Output(nearest);
     }
 }
