@@ -26,7 +26,7 @@ public class Flock : AI {
     // On initialization
     override protected void Awake() {
         player = GetComponent<NPCController>();
-        strengths = new Steering[5];
+        strengths = new Steering[weights.Length];
     }
 
     // Combine behaviors to create flock behavior
@@ -52,8 +52,11 @@ public class Flock : AI {
         // Calculate strengths and output
         strengths[0] = ai[0].Output(lead);
         strengths[1] = ai[1].Output(lead);
+        if (strengths.Length > 5) {
+            strengths[5] = ai[5].Output(lead);
+        }
         Steering steering = new Steering();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < weights.Length; i++) {
             strengths[i] *= weights[i];
             steering += strengths[i];
         }

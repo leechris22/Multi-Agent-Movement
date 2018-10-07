@@ -21,10 +21,6 @@ public class AI : MonoBehaviour {
     public float wanderRadius;
     public float wanderRate;
 
-    // Holds the path to follow
-    public GameObject[] Path;
-    public int current = 0;
-
     protected void Start() {
         player = GetComponent<NPCController>();
         wanderOrientation = player.rb.rotation;
