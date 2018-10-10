@@ -4,7 +4,7 @@ using UnityEngine;
 
 // Create a cone to detect collisions
 public class ConeCheck : Separate {
-    // Avoid group
+    // Initialize necessary variables
     [HideInInspector]
     public List<NPCController> targets;
     [SerializeField]

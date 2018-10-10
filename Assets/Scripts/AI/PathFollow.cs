@@ -32,4 +32,17 @@ public class PathFollow : AI {
         // Return output
         return steering;
     }
+
+    // Obtain the nearest point in the path
+    public void GetNearest() {
+        float distance = Mathf.Infinity;
+        for (int i = 0; i < path.Length; i++) {
+            if (Vector2.Distance(path[i].position, player.data.position) < distance && current < i) {
+                distance = Vector2.Distance(path[i].position, player.data.position);
+                current = i;
+
+            }
+        }
+    }
+
 }

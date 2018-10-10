@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\AI\PathFollow.cs" />
     <Compile Include="Assets\Scripts\AI\Pursue.cs" />
     <Compile Include="Assets\Scripts\AI\RayCasting.cs" />
+    <Compile Include="Assets\Scripts\AI\RayCastPath.cs" />
     <Compile Include="Assets\Scripts\AI\Seek.cs" />
     <Compile Include="Assets\Scripts\AI\Separate.cs" />
     <Compile Include="Assets\Scripts\AI\Steering.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\Part1\LevelManager1.cs" />
     <Compile Include="Assets\Scripts\Part2\CollisionCamera.cs" />
     <Compile Include="Assets\Scripts\Part2\LevelManager2.cs" />
+    <Compile Include="Assets\Scripts\Part3\LevelManager3.cs" />
     <Compile Include="Assets\Scripts\Path\Bezier.cs" />
     <Compile Include="Assets\Scripts\Path\Path.cs" />
     <Compile Include="Assets\Scripts\Path\PathCreator.cs" />
