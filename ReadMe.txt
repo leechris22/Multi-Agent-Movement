@@ -1,3 +1,8 @@
+Team Members: Christian Lee, Harry
+
+
+Build can be found in the Builds folder.
+
 Press 1,2,3 to switch between/reset parts. 1 leads to Part 1, etc.
 
 ***Part 1***
@@ -62,13 +67,14 @@ Collision Prediction - 1
 ***Part 3***
 
 Controls:
-Switch to Cone Check - Q
-Switch to Collision Prediction - E
 Move Camera Horizontally - AD or Left and Right Arrows
 
 3) In Part 3, how many rays did you use in your ray-casting, and why?
 
+Three rays were used in the ray-casting. The first ray points forward and has
+the largest length. The second and third ray points almost 45 degrees from the first
+ray. Originally, one ray was used but that made the boid get stuck on the corner turn
+at location 4. Three rays fixes this error and provides a way to detect obstacles on the
+sides of the boid.
 
-- 2D or 3D, implement curved shapes
-- Says one agent, so only one bird
-- Corner Trap demo
+- 

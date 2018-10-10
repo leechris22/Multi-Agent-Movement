@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\AI\PathFollow.cs" />
     <Compile Include="Assets\Scripts\AI\Pursue.cs" />
     <Compile Include="Assets\Scripts\AI\RayCasting.cs" />
+    <Compile Include="Assets\Scripts\AI\RayCastPath.cs" />
     <Compile Include="Assets\Scripts\AI\Seek.cs" />
     <Compile Include="Assets\Scripts\AI\Separate.cs" />
     <Compile Include="Assets\Scripts\AI\Steering.cs" />
