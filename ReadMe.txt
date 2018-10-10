@@ -1,4 +1,4 @@
-Team Members: Christian Lee, Harry
+Team Members: Christian Lee, Zhangliang Ma
 
 
 Build can be found in the Builds folder.
@@ -77,4 +77,5 @@ ray. Originally, one ray was used but that made the boid get stuck on the corner
 at location 4. Three rays fixes this error and provides a way to detect obstacles on the
 sides of the boid.
 
-- 
+Avoid Distance - 2
+Lookahead - 3
