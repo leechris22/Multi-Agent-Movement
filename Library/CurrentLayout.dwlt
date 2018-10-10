@@ -500,7 +500,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts/Gradient
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: D:\others\COGS\GAME AI\hw3\Multi-Agent-Movement
+  m_LastProjectPath: C:\Users\Christian\Documents\GitHub\Multi-Agent-Movement
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -767,7 +767,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0

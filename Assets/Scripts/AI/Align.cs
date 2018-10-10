@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FaceTowards : AI {
+// Aligns the player's orientation to the target's orientation
+public class Align : AI {
     // Initialize necessary variables
     [SerializeField]
     private float slowRadiusA;
@@ -12,10 +13,8 @@ public class FaceTowards : AI {
     private float timeToTarget;
 
     // Define Output
-    override public Steering Output(NPCController target) {
-        // Work out the direction to target
-        Vector2 direction = target.rb.position - player.rb.position;
-        float rotation = -Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg - player.rb.rotation;
+    override public Steering Output(Kinematic target) {
+        float rotation = target.orientation - player.data.orientation;
 
         // Map the result to the (-180, 180) interval
         while (rotation > 180) {
@@ -28,7 +27,6 @@ public class FaceTowards : AI {
 
         // Check if we are there, return no steering
         if (rotationSize < stopRadiusA) {
-            player.rb.angularVelocity = 0;
             return new Steering();
         }
 
@@ -37,12 +35,12 @@ public class FaceTowards : AI {
         targetRotation *= rotation / rotationSize;
 
         // Create the structure to hold our output and bound acceleration
-        Steering steering = new Steering(Vector2.zero, (targetRotation - player.rb.angularVelocity) / timeToTarget);
+        Steering steering = new Steering(Vector2.zero, (targetRotation - player.data.rotation) / timeToTarget);
         if (Mathf.Abs(steering.angular) > player.maxAccelerationA) {
             steering.angular /= Mathf.Abs(steering.angular);
             steering.angular *= player.maxAccelerationA;
         }
-        
+
         // Return angular acceleration
         return steering;
     }

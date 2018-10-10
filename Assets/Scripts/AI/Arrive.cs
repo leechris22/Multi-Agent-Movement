@@ -12,9 +12,9 @@ public class Arrive : AI {
     private float timeToTarget;
 
     // Define Output
-    override public Steering Output(NPCController target) {
+    override public Steering Output(Kinematic target) {
         // Get the direction to the target
-        Vector2 direction = target.rb.position - player.rb.position;
+        Vector2 direction = target.position - player.data.position;
         float distance = direction.magnitude;
 
         // Check if we are there, return no steering
@@ -24,10 +24,9 @@ public class Arrive : AI {
 
         // Calculate a scaled speed if player is inside the slowRadius
         float targetSpeed = (distance > slowRadiusL ? player.maxSpeedL : player.maxSpeedL * distance / slowRadiusL);
-        Vector2 targetVelocity = Vector2.ClampMagnitude(direction, targetSpeed);
 
         // Create the structure to hold our output and bound acceleration
-        Steering steering = new Steering((targetVelocity - player.rb.velocity) / timeToTarget, 0);
+        Steering steering = new Steering((direction.normalized * targetSpeed - player.data.velocity) / timeToTarget, 0);
         steering.linear = Vector2.ClampMagnitude(steering.linear, player.maxAccelerationL);
 
         // Return acceleration

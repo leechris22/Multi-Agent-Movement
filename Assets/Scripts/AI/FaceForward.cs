@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Face the direction the player is moving
-public class FaceForward : AI {
+public class FaceForward : Align {
     // Define Output
-    override public Steering Output(NPCController target) {
-        player.rb.MoveRotation(-Mathf.Atan2(player.rb.velocity.x, player.rb.velocity.y) * Mathf.Rad2Deg);
-        return new Steering();
+    override public Steering Output(Kinematic target) {
+        target.orientation = -Mathf.Atan2(player.data.velocity.x, player.data.velocity.y) * Mathf.Rad2Deg;
+        return base.Output(target);
     }
 }

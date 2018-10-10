@@ -43,13 +43,12 @@ GameObject:
   - component: {fileID: 58703512027116864}
   - component: {fileID: 114417884806250622}
   - component: {fileID: 114596264548458136}
-  - component: {fileID: 114343733757861420}
-  - component: {fileID: 114527464716719790}
   - component: {fileID: 114973998937274046}
   - component: {fileID: 114429577157682430}
   - component: {fileID: 114996402683439696}
+  - component: {fileID: 114343733757861420}
+  - component: {fileID: 114527464716719790}
   - component: {fileID: 114545231211096344}
-  - component: {fileID: 114335667761401704}
   - component: {fileID: 114219937216409276}
   m_Layer: 9
   m_Name: RedBoid
@@ -228,19 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  radius: 3
---- !u!114 &114335667761401704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896315022158306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e72d7e714d1e74fbd0dc95338f35bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxPrediction: 1
+  radius: 1
 --- !u!114 &114343733757861420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,9 +251,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5d502761869f448aa11cd155957d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ai: {fileID: 114596264548458136}
   rb: {fileID: 0}
+  data:
+    position: {x: 0, y: 0}
+    orientation: 0
+    velocity: {x: 0, y: 0}
+    rotation: 0
   target: {fileID: 0}
+  ai: {fileID: 114596264548458136}
   maxSpeedL: 5
   maxAccelerationL: 5
   maxSpeedA: 100
@@ -282,9 +274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9eafdfcbda2f049b3dc3b962bcf415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowRadiusL: 5
-  stopRadiusL: 4
-  timeToTarget: 0.1
+  slowRadiusL: 10
+  stopRadiusL: 1.5
+  timeToTarget: 0.01
 --- !u!114 &114527464716719790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,6 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a32ce39f49905244bc6e7f353157ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowRadiusA: 50
+  stopRadiusA: 6
+  timeToTarget: 0.1
 --- !u!114 &114545231211096344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb974c9463e0683429eb913a085e662f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decayCoefficient: 10
   targets: []
   threshold: 2
 --- !u!114 &114596264548458136
@@ -323,23 +319,23 @@ MonoBehaviour:
   targets: []
   weights:
   - 3
-  - 1
-  - 5
-  - 1
+  - 0.5
   - 1
   - 2
+  - 1
   - 2
+  - 1
   ai:
-  - {fileID: 114343733757861420}
-  - {fileID: 114527464716719790}
   - {fileID: 114973998937274046}
   - {fileID: 114429577157682430}
   - {fileID: 114996402683439696}
+  - {fileID: 114343733757861420}
+  - {fileID: 114527464716719790}
   - {fileID: 114545231211096344}
   - {fileID: 114219937216409276}
+  threshold: 3
   addCone: 0
   addPrediction: 0
-  threshold: 3
 --- !u!114 &114973998937274046
 MonoBehaviour:
   m_ObjectHideFlags: 1

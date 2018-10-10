@@ -16,12 +16,8 @@ public class LevelManager2 : MonoBehaviour {
     private GameObject RedBoidLead;
 
     // Set instantiated game object references
-    [SerializeField]
     private List<GameObject> GreenBoids;
-    [SerializeField]
     private List<GameObject> RedBoids;
-    [SerializeField]
-    private NPCController Player;
 
     // Set level loading material
     [SerializeField]

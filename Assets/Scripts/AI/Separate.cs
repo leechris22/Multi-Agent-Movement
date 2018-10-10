@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Move the player away from the target
 public class Separate : AI {
     // Initialize necessary variables
     [SerializeField]
     private float decayCoefficient;
-
+    
     // Define Output
-    override public Steering Output(NPCController target) {
-        // Get direction and distance
-        Vector2 direction = target.rb.position - player.rb.position;
-
-        // Get the separation strength
+    override public Steering Output(Kinematic target) {
+        // Get direction
+        Vector2 direction = target.position - player.data.position;
+        
+        // Calculate the separation strength
         float strength = Mathf.Min(decayCoefficient / (direction.magnitude * direction.magnitude), player.maxAccelerationL);
 
         // Return acceleration
-        return new Steering(-Vector2.ClampMagnitude(direction, strength), 0);
+        return new Steering(-direction.normalized * strength, 0);
     }
 }
