@@ -5,11 +5,12 @@ using UnityEngine;
 // Stores data for an object used in AI calculations
 public class NPCController : MonoBehaviour {
     // Store variables for objects
-    [SerializeField]
-    private AI ai;
     [HideInInspector]
     public Rigidbody2D rb;
+    public Kinematic data;
     public NPCController target;
+    [SerializeField]
+    private AI ai;
 
     // Bounds linear changes
     public float maxSpeedL;
@@ -22,19 +23,22 @@ public class NPCController : MonoBehaviour {
     // On initialization
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        updateData();
     }
 
     // Update the movement
     private void FixedUpdate() {
-        updateMovement(ai.Output(target), Time.deltaTime);
+        updateMovement(ai.Output(target.data), Time.deltaTime);
+        updateData();
+    }
+
+    protected void updateData() {
+        data = new Kinematic(rb.position, rb.rotation, rb.velocity, rb.angularVelocity);
     }
 
     protected void updateMovement(Steering steering, float time) {
         // Bound the acceleration
-        if (steering.linear.magnitude > maxAccelerationL) {
-            steering.linear.Normalize();
-            steering.linear *= maxAccelerationL;
-        }
+        steering.linear = Vector2.ClampMagnitude(steering.linear, maxAccelerationL);
         float angularAcceleration = Mathf.Abs(steering.angular);
         if (angularAcceleration > maxAccelerationA) {
             steering.angular /= angularAcceleration;
@@ -42,9 +46,7 @@ public class NPCController : MonoBehaviour {
         }
 
         // Bound the velocity
-        if (rb.velocity.magnitude > maxSpeedL) {
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeedL);
-        }
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeedL);
         if (rb.angularVelocity > maxSpeedA) {
             rb.angularVelocity = maxSpeedA;
         }

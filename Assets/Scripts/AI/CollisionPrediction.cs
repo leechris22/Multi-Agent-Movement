@@ -11,7 +11,7 @@ public class CollisionPrediction : AI {
     private float radius;
 
     // Define Output
-    override public Steering Output(NPCController lead) {
+    override public Steering Output(Kinematic lead) {
         // Calculate prediction scalar based on current speed and target distance
         float shortestTime = Mathf.Infinity;
         NPCController firstTarget = null;
@@ -22,8 +22,8 @@ public class CollisionPrediction : AI {
 
         foreach (NPCController target in targets) {
             // Calculate the time to collision
-            Vector2 position = target.rb.position - player.rb.position;
-            Vector2 velocity = target.rb.velocity - player.rb.velocity;
+            Vector2 position = target.data.position - player.data.position;
+            Vector2 velocity = target.data.velocity - player.data.velocity;
             float timeToCollision = (Vector2.Dot(position, velocity) / (velocity.magnitude * velocity.magnitude));
 
             // Check if the collision will happen
@@ -46,14 +46,14 @@ public class CollisionPrediction : AI {
         }
 
         // Calculate the steering
-        if (!firstTarget) {
+        if (firstTarget == null) {
             return new Steering();
         }
 
         // If we’re going to hit exactly, or if we’re already colliding, then do the steering based on current position.
         Vector2 relativePos = Vector2.zero;
         if (firstSeparation <= 0 || firstDistance < 2 * radius) {
-            relativePos = firstTarget.rb.position - player.rb.position;
+            relativePos = firstTarget.data.position - player.data.position;
         } else {
             // Otherwise calculate the future relative position
             relativePos = firstPosition + firstVelocity * shortestTime;

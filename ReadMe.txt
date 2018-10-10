@@ -7,21 +7,21 @@ Move player - Arrow keys or WASD or press and hold with mouse
 
 1) What are the weights of the three steering behaviors in your flocking model?
 
-Pursue - 3
-Face - 1
-Separation - 5
-Cohesion(Arrive) - 1.5
+Separation - 3
+Cohesion(Arrive) - 0.5
 Velocity Match- 1
+Pursue - 2
+Face - 1
 
 - The Boids follow the player using Pursue.
-- Pursue was set to 3 so that the Boids can keep up with the player.
+- Pursue was set to 2 so that the Boids can keep up with the player and emphasize
+the flocking behavior.
 - Face is the only behavior that affects orientation, so the weight is set to 1.
-- Separation is set to 5 to make the Boids more spread out.
-- Cohesion is set to 1.5 to make the Boids look grouped.
-- Velocity Match is not too important, so the weight is 1.
+- Separation is set to 3 with a decay coefficient of 10 to make the Boids more spread out.
+- Cohesion is set to 0.5 so that the velocity match is more effective.
 - Background is colored as a gradient to make the movement more clear.
 - Align was originally added so that the Boids had a similar orientation to its group,
-but that made the Boids turn unnatural.
+but that made the Boids turn unnaturally.
 
 
 ***Part 2***
@@ -37,28 +37,27 @@ were its parameters?
 
 To avoid a group of agents, the Cone Check or CollisionPrediction algorithms were added
 as extra behaviors for Flock. The Cone Check does the dot product calculation, then calls
-Evade on the target. For multiple targets, the cone check only calls Evade on the closest one.
+Separate on the target. For multiple targets, the cone check only calls Separate on the closest one.
 
 Cone Check: Threshold = 2
-Evade: Max Prediction = 1
-Collision Prediction: Radius = 3
+Collision Prediction: Radius = 1
 
 - An invisible lead uses the Path Following behavior to follow a path.
 - The Flocking behavior calls Pursue on this lead. This allows the Boids to follow the path
 as a group
 - The Flocking behaviors and weights are:
 
-Pursue - 3
-Face - 1
-Separate - 5
-Arrive - 1
+Separate - 3
+Arrive - 0.5
 Velocity Match - 1
+Pursue - 2
+Face - 1
 Cone Check- 2
-Collision Prediction - 2
+Collision Prediction - 1
 
 - The last two behaviors are toggled false, but can be set to true using Q or E.
 - Even with the collision prevention behaviors, the Boids tend to collide with each other a lot.
-- Many values have been tested, but there will usually be one or two Boids that get stuck together.
+- The Collision Prediction behavior seems to perform better than the Cone Check behavior.
 
 ***Part 3***
 

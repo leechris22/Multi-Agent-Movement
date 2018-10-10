@@ -21,5 +21,6 @@ public class PlayerController : NPCController {
         rb.AddForce(move);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeedL);
         rb.MoveRotation(-Mathf.Atan2(rb.velocity.x, rb.velocity.y) * Mathf.Rad2Deg);
+        updateData();
     }
 }

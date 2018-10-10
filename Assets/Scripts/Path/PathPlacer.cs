@@ -14,7 +14,7 @@ public class PathPlacer : MonoBehaviour {
     [SerializeField]
     private GameObject PointPrefab;
     [HideInInspector]
-    public NPCController[] path;
+    public Kinematic[] path;
 
     // On start, create points
     void Awake() {
@@ -22,12 +22,12 @@ public class PathPlacer : MonoBehaviour {
 
         Vector2[] points = GetComponent<PathCreator>().path.CalculateEvenlySpacedPoints(spacing, resolution);
         line.positionCount = points.Length;
-        path = new NPCController[points.Length];
+        path = new Kinematic[points.Length];
         
         // Add points to linerenderer and path array
         for (int i = 0; i < points.Length; i++) {
             line.SetPosition(i, points[i]);
-            path[i] = Instantiate(PointPrefab, points[i], Quaternion.identity).GetComponent<NPCController>();
+            path[i] = new Kinematic(points[i], 0, Vector2.zero, 0);
         }
     }
 }

@@ -43,13 +43,12 @@ GameObject:
   - component: {fileID: 58600621601420468}
   - component: {fileID: 114368663028592180}
   - component: {fileID: 114567331576715452}
-  - component: {fileID: 114105020351798656}
-  - component: {fileID: 114217616821986792}
   - component: {fileID: 114888248357688588}
   - component: {fileID: 114417521214434268}
   - component: {fileID: 114272109848875324}
+  - component: {fileID: 114105020351798656}
+  - component: {fileID: 114217616821986792}
   - component: {fileID: 114122115613232980}
-  - component: {fileID: 114177095258559236}
   - component: {fileID: 114406933942098456}
   m_Layer: 9
   m_Name: GreenBoid
@@ -239,20 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb974c9463e0683429eb913a085e662f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decayCoefficient: 10
   targets: []
   threshold: 2
---- !u!114 &114177095258559236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1377075383433880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e72d7e714d1e74fbd0dc95338f35bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxPrediction: 1
 --- !u!114 &114217616821986792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a32ce39f49905244bc6e7f353157ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowRadiusA: 50
+  stopRadiusA: 6
+  timeToTarget: 0.1
 --- !u!114 &114272109848875324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,9 +278,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5d502761869f448aa11cd155957d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ai: {fileID: 114567331576715452}
   rb: {fileID: 0}
+  data:
+    position: {x: 0, y: 0}
+    orientation: 0
+    velocity: {x: 0, y: 0}
+    rotation: 0
   target: {fileID: 0}
+  ai: {fileID: 114567331576715452}
   maxSpeedL: 5
   maxAccelerationL: 5
   maxSpeedA: 100
@@ -306,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  radius: 3
+  radius: 1
 --- !u!114 &114417521214434268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,9 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9eafdfcbda2f049b3dc3b962bcf415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowRadiusL: 5
-  stopRadiusL: 4
-  timeToTarget: 0.1
+  slowRadiusL: 10
+  stopRadiusL: 1.5
+  timeToTarget: 0.01
 --- !u!114 &114567331576715452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -333,26 +329,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  facing: {fileID: 114217616821986792}
   weights:
   - 3
-  - 1
-  - 5
-  - 1
+  - 0.5
   - 1
   - 2
+  - 1
   - 2
+  - 1
   ai:
-  - {fileID: 114105020351798656}
-  - {fileID: 114217616821986792}
   - {fileID: 114888248357688588}
   - {fileID: 114417521214434268}
   - {fileID: 114272109848875324}
+  - {fileID: 114105020351798656}
+  - {fileID: 114217616821986792}
   - {fileID: 114122115613232980}
   - {fileID: 114406933942098456}
+  threshold: 3
   addCone: 0
   addPrediction: 0
-  threshold: 3
 --- !u!114 &114888248357688588
 MonoBehaviour:
   m_ObjectHideFlags: 1

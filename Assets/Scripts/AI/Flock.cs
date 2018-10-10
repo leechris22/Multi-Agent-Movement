@@ -15,59 +15,52 @@ public class Flock : AI {
     private float[] weights;
     [SerializeField]
     private AI[] ai;
-    private Steering[] strengths;
-
-    // For collision prevention behaviors
-    [HideInInspector]
-    public bool addCone = false;
-    [HideInInspector]
-    public bool addPrediction = false;
 
     // Distance threshold for targets
     [SerializeField]
     private float threshold;
 
-    // On initialization
-    override protected void Awake() {
-        player = GetComponent<NPCController>();
-        strengths = new Steering[weights.Length];
-    }
+    // Just to show which behavior represents AI[(int)behavior]
+    enum behaviors { Separate, Arrive, VelocityMatch, Pursue, Face, ConeCheck, CollisionPrediction};
+
+    // For collision prevention toggle
+    [HideInInspector]
+    public bool addCone = false;
+    [HideInInspector]
+    public bool addPrediction = false;
 
     // Combine behaviors to create flock behavior
-    override public Steering Output(NPCController lead) {
+    override public Steering Output(Kinematic lead) {
         // Define variables
+        Steering[] strengths = new Steering[weights.Length];
         for (int i = 0; i < strengths.Length; i++) {
             strengths[i] = new Steering();
         }
         int count = 0;
         
-        // Obtain the averaged data for nearby boids and calculate separation velocity
+        // Calculate the flocking behaviors for each flock
         foreach (NPCController target in targets) {
-            if (Vector2.Distance(target.rb.position, player.rb.position) < threshold) {
-                strengths[2] += ai[2].Output(target);
-                strengths[3] += ai[3].Output(target);
-                strengths[4] += ai[4].Output(target);
+            if (Vector2.Distance(target.data.position, player.data.position) < threshold) {
+                for (int i = 0; i < 3; i++) {
+                    strengths[i] += ai[i].Output(target.data);
+                }
                 count++;
             }
         }
-        strengths[3] /= Mathf.Max(count, 1);
-        strengths[4] /= Mathf.Max(count, 1);
+        strengths[1] /= Mathf.Max(count, 1);
+        strengths[2] /= Mathf.Max(count, 1);
 
-        // Calculate strengths and output
-        strengths[0] = ai[0].Output(lead);
-        strengths[1] = ai[1].Output(lead);
-        if (addCone) {
-            strengths[5] = ai[5].Output(lead);
-        }
-        if (addPrediction) {
-            strengths[6] = ai[6].Output(lead);
+        // Calculate lead behaviors
+        for (int i = 3; i < weights.Length; i++) {
+            if ((i != 5 || addCone) && (i != 6 || addPrediction)) {
+                strengths[i] = ai[i].Output(lead);
+            }
         }
 
         // Add the strengths and return the result
         Steering steering = new Steering();
         for (int i = 0; i < weights.Length; i++) {
-            strengths[i] *= weights[i];
-            steering += strengths[i];
+            steering += strengths[i] * weights[i];
         }
         return steering;
     }

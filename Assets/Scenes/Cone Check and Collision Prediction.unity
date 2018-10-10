@@ -652,9 +652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9eafdfcbda2f049b3dc3b962bcf415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowRadiusL: 5
-  stopRadiusL: 4
-  timeToTarget: 0.1
+  slowRadiusL: 10
+  stopRadiusL: 1.5
+  timeToTarget: 0.01
 --- !u!114 &706253816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,7 +669,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: []
   pathRadius: 3
-  current: 0
 --- !u!114 &706253817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,11 +681,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5d502761869f448aa11cd155957d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ai: {fileID: 706253816}
   rb: {fileID: 0}
-  target: {fileID: 0}
-  maxSpeedL: 15
-  maxAccelerationL: 15
+  data:
+    position: {x: 0, y: 0}
+    orientation: 0
+    velocity: {x: 0, y: 0}
+    rotation: 0
+  target: {fileID: 706253817}
+  ai: {fileID: 706253816}
+  maxSpeedL: 10
+  maxAccelerationL: 10
   maxSpeedA: 100
   maxAccelerationA: 100
 --- !u!50 &706253818
@@ -1120,6 +1124,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114193873501793958, guid: fc14619fe07b86142ae5328d8d5a018f,
+        type: 2}
+      propertyPath: slowRadiusL
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193873501793958, guid: fc14619fe07b86142ae5328d8d5a018f,
+        type: 2}
+      propertyPath: stopRadiusL
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193873501793958, guid: fc14619fe07b86142ae5328d8d5a018f,
+        type: 2}
+      propertyPath: timeToTarget
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704337831524750, guid: fc14619fe07b86142ae5328d8d5a018f,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1175574490}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc14619fe07b86142ae5328d8d5a018f, type: 2}
   m_IsPrefabAsset: 0
@@ -1331,9 +1355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9eafdfcbda2f049b3dc3b962bcf415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowRadiusL: 5
-  stopRadiusL: 4
-  timeToTarget: 0.1
+  slowRadiusL: 10
+  stopRadiusL: 1.5
+  timeToTarget: 0.01
 --- !u!114 &1175574489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,7 +1372,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: []
   pathRadius: 3
-  current: 0
 --- !u!114 &1175574490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,9 +1384,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5d502761869f448aa11cd155957d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ai: {fileID: 1175574489}
   rb: {fileID: 0}
-  target: {fileID: 0}
+  data:
+    position: {x: 0, y: 0}
+    orientation: 0
+    velocity: {x: 0, y: 0}
+    rotation: 0
+  target: {fileID: 1175574490}
+  ai: {fileID: 1175574489}
   maxSpeedL: 10
   maxAccelerationL: 10
   maxSpeedA: 100
@@ -1445,12 +1473,12 @@ Prefab:
     - target: {fileID: 114704337831524750, guid: fc14619fe07b86142ae5328d8d5a018f,
         type: 2}
       propertyPath: maxSpeedL
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114704337831524750, guid: fc14619fe07b86142ae5328d8d5a018f,
         type: 2}
       propertyPath: maxAccelerationL
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114704337831524750, guid: fc14619fe07b86142ae5328d8d5a018f,
         type: 2}
@@ -1482,18 +1510,23 @@ Prefab:
     - target: {fileID: 114193873501793958, guid: fc14619fe07b86142ae5328d8d5a018f,
         type: 2}
       propertyPath: slowRadiusL
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114193873501793958, guid: fc14619fe07b86142ae5328d8d5a018f,
         type: 2}
       propertyPath: stopRadiusL
-      value: 4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 114193873501793958, guid: fc14619fe07b86142ae5328d8d5a018f,
         type: 2}
       propertyPath: timeToTarget
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 114704337831524750, guid: fc14619fe07b86142ae5328d8d5a018f,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 706253817}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc14619fe07b86142ae5328d8d5a018f, type: 2}
   m_IsPrefabAsset: 0
@@ -1958,9 +1991,6 @@ MonoBehaviour:
     type: 2}
   GreenBoidLead: {fileID: 1175574486}
   RedBoidLead: {fileID: 706253813}
-  GreenBoids: []
-  RedBoids: []
-  Player: {fileID: 0}
   GreenBoidPath: {fileID: 778367967}
   RedBoidPath: {fileID: 146348703}
   ConeText: {fileID: 139843739}

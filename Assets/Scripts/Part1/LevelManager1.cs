@@ -37,6 +37,7 @@ public class LevelManager1 : MonoBehaviour {
         Vector3 size = BoidSpawner.transform.localScale;
         Vector3 position = BoidSpawner.transform.position + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), 0);
         GameObject temp = Instantiate(BoidPrefab, position, Quaternion.identity);
+
         temp.GetComponent<NPCController>().target = Player;
         foreach (GameObject Boid in Boids) {
             Boid.GetComponent<Flock>().targets.Add(temp.GetComponent<NPCController>());

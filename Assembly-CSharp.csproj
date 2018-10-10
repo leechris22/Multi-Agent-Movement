@@ -62,15 +62,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\AI.cs" />
+    <Compile Include="Assets\Scripts\AI\Align.cs" />
     <Compile Include="Assets\Scripts\AI\Arrive.cs" />
     <Compile Include="Assets\Scripts\AI\CollisionPrediction.cs" />
     <Compile Include="Assets\Scripts\AI\ConeCheck.cs" />
     <Compile Include="Assets\Scripts\AI\Evade.cs" />
+    <Compile Include="Assets\Scripts\AI\Face.cs" />
     <Compile Include="Assets\Scripts\AI\FaceForward.cs" />
-    <Compile Include="Assets\Scripts\AI\FaceTowards.cs" />
+    <Compile Include="Assets\Scripts\AI\Flee.cs" />
     <Compile Include="Assets\Scripts\AI\Flock.cs" />
+    <Compile Include="Assets\Scripts\AI\Kinematic.cs" />
     <Compile Include="Assets\Scripts\AI\PathFollow.cs" />
     <Compile Include="Assets\Scripts\AI\Pursue.cs" />
+    <Compile Include="Assets\Scripts\AI\RayCasting.cs" />
+    <Compile Include="Assets\Scripts\AI\Seek.cs" />
     <Compile Include="Assets\Scripts\AI\Separate.cs" />
     <Compile Include="Assets\Scripts\AI\Steering.cs" />
     <Compile Include="Assets\Scripts\AI\VelocityMatch.cs" />
